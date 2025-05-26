@@ -284,7 +284,7 @@ void S_StartSound(const mobj_t *origin, int sfx_id)
     return;
 
   // Assigns the handle to one of the channels in the mix/output buffer.
-  channels[cnum].handle = I_StartSound(sfx_id, volume, sep, pitch, priority);
+  channels[cnum].handle = I_StartSound(sfx_id, volume, sep, pitch, priority, sfx->segments);
 }
 
 void S_StopSound(const mobj_t *origin)

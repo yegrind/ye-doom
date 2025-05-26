@@ -714,6 +714,7 @@ static void P_KillMobj(mobj_t *source, mobj_t *target)
     {
     case MT_WOLFSS:
     case MT_POSSESSED:
+    case MT_POSSESSED2:
       item = MT_CLIP;
       break;
 

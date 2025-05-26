@@ -203,9 +203,20 @@ static SAMPLE channel[NUM_CHANNELS];
 // active sounds, which is maintained as a given number
 // of internal channels. Returns a handle.
 
-int I_StartSound(int sfx, int   vol, int sep, int pitch, int pri)
+
+static unsigned int s_seed = 1; // Seed value - change this to alter the sequence
+static int generate_index(int max) {
+    // Simple Linear Congruential Generator (LCG)
+    s_seed = (s_seed * 1103515245 + 12345) & 0x7fffffff; // Standard LCG formula
+
+    // Map the generated number to the desired range [0, max - 1]
+    return (s_seed % max); 
+}
+
+int I_StartSound(int sfx, int   vol, int sep, int pitch, int pri, int segments)
 {
   static int handle;
+  SAMPLE local_sample;
 
   // move up one slot, with wraparound
   if (++handle >= NUM_CHANNELS)
@@ -214,8 +225,33 @@ int I_StartSound(int sfx, int   vol, int sep, int pitch, int pri)
   // destroy anything still in the slot
   stop_sample(&channel[handle]);
 
+
+  //
+  // We will Add a segment count to S_sfx and allow random segmentation
+  memcpy(&local_sample, S_sfx[sfx].data, sizeof(SAMPLE));
+
+  if(segments > 0)
+  {
+      int segment_index;
+      size_t segment_size;
+      size_t segment_offset;
+
+      segment_index = generate_index(segments);
+      segment_size = local_sample.len / segments;
+      if(local_sample.bits == 16)
+      {
+        segment_size *= 2;
+      }
+      segment_offset = segment_size * segment_index;
+
+      // patch local SAMPLE
+      local_sample.len /= segments;
+      local_sample.loop_end = local_sample.len;
+      local_sample.data = (void*)( (size_t)local_sample.data + segment_offset );
+  }
+
   // Copy the sound's data into the sound sample slot
-  memcpy(&channel[handle], S_sfx[sfx].data, sizeof(SAMPLE));
+  memcpy(&channel[handle], &local_sample, sizeof(SAMPLE));
 
   // Start the sound
 //  play_sample(&channel[handle],vol*VOLSCALE+VOLSCALE-1,256-sep,PITCH(pitch),0);

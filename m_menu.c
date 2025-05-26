@@ -4118,6 +4118,9 @@ void M_DrawHelp (void)
 ////////////////////////////////////////////////////////////////////////////
 
 enum {
+  kanye,
+  kim,
+  banker,
   prog,
   art,
   test, test_stub, test_stub2,
@@ -4128,7 +4131,10 @@ enum {
 };
 
 enum {
-  cr_prog=1,
+  cr_kanye=1,
+  cr_kim,
+  cr_banker,
+  cr_prog,
   cr_art,
   cr_test,
   cr_canine,
@@ -4144,6 +4150,15 @@ enum {
 #define CR_SH 2
 
 setup_menu_t cred_settings[]={
+
+  {"The Motherfucking Hero",S_SKIP|S_CREDIT,m_null, CR_X, CR_Y + CR_S*kanye + CR_SH*cr_kanye},
+  {"Kanye, aka Ye",S_SKIP|S_CREDIT|S_LEFTJUST,m_null, CR_X2, CR_Y + CR_S*kanye + CR_SH*cr_kanye},
+
+  {"Bootilicious Ho",S_SKIP|S_CREDIT,m_null, CR_X, CR_Y + CR_S*kim + CR_SH*cr_kim},
+  {"Kim",S_SKIP|S_CREDIT|S_LEFTJUST,m_null, CR_X2, CR_Y + CR_S*kim + CR_SH*cr_kim},
+
+  {"The Real Victim",S_SKIP|S_CREDIT,m_null, CR_X, CR_Y + CR_S*banker + CR_SH*cr_banker},
+  {"Mr. Banker",S_SKIP|S_CREDIT|S_LEFTJUST,m_null, CR_X2, CR_Y + CR_S*banker + CR_SH*cr_banker},
 
   {"Programmer",S_SKIP|S_CREDIT,m_null, CR_X, CR_Y + CR_S*prog + CR_SH*cr_prog},
   {"Lee Killough",S_SKIP|S_CREDIT|S_LEFTJUST,m_null, CR_X2, CR_Y + CR_S*prog + CR_SH*cr_prog},

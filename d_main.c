@@ -1286,6 +1286,8 @@ void D_DoomMain(void)
   clrscr();
   textbackground(LIGHTGRAY); textcolor(RED);  // default v1.9 colors
 
+
+#if 0
   switch ( gamemode )
     {
     case retail:
@@ -1363,7 +1365,10 @@ void D_DoomMain(void)
  gotoxy(1,wherey()); // GB 2014: display allegro version:
  cprintf("MBF - Built on %s by GB (with Allegro %s)\n",version_date,ALLEGRO_VERSION_STR);   
  gotoxy(1,wherey());
- //printf("%s\nBuilt on %s\n", title, version_date);    // killough 2/1/98
+
+#endif
+
+ printf("%s\nBuilt on %s\n", title, version_date);    // killough 2/1/98
  
  if (devparm)
     printf(D_DEVSTR);

@@ -75,6 +75,9 @@ struct sfxinfo_struct {
 
   // lump number of sfx
   int lumpnum;
+
+  // number of sound segments for random selection
+  int segments;
 };
 
 //
@@ -237,6 +240,8 @@ typedef enum {
   sfx_plpain,
   sfx_dmpain,
   sfx_popain,
+  sfx_poxpain,
+  sfx_topain,
   sfx_vipain,
   sfx_mnpain,
   sfx_pepain,
@@ -248,6 +253,7 @@ typedef enum {
   sfx_posit1,
   sfx_posit2,
   sfx_posit3,
+  sfx_posxit,
   sfx_bgsit1,
   sfx_bgsit2,
   sfx_sgtsit,

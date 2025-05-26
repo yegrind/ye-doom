@@ -188,6 +188,8 @@ typedef enum
   SPR_BON4, // killough 7/11/98: unholy bible in beta version
 #endif
 
+  SPR_POST, // custom bitch
+
   NUMSPRITES  // counter of how many there are
 } spritenum_t;
 
@@ -403,6 +405,41 @@ typedef enum
   S_POSS_RAISE2,
   S_POSS_RAISE3,
   S_POSS_RAISE4,
+
+  S_POST_STND,
+  S_POST_STND2,
+  S_POST_RUN1,
+  S_POST_RUN2,
+  S_POST_RUN3,
+  S_POST_RUN4,
+  S_POST_RUN5,
+  S_POST_RUN6,
+  S_POST_RUN7,
+  S_POST_RUN8,
+  S_POST_ATK1,
+  S_POST_ATK2,
+  S_POST_ATK3,
+  S_POST_PAIN,
+  S_POST_PAIN2,
+  S_POST_DIE1,
+  S_POST_DIE2,
+  S_POST_DIE3,
+  S_POST_DIE4,
+  S_POST_DIE5,
+  S_POST_XDIE1,
+  S_POST_XDIE2,
+  S_POST_XDIE3,
+  S_POST_XDIE4,
+  S_POST_XDIE5,
+  S_POST_XDIE6,
+  S_POST_XDIE7,
+  S_POST_XDIE8,
+  S_POST_XDIE9,
+  S_POST_RAISE1,
+  S_POST_RAISE2,
+  S_POST_RAISE3,
+  S_POST_RAISE4,
+
   S_SPOS_STND,
   S_SPOS_STND2,
   S_SPOS_RUN1,
@@ -1273,6 +1310,7 @@ extern char *sprnames[];             // 1/17/98 killough
 typedef enum {
   MT_PLAYER,
   MT_POSSESSED,
+  MT_POSSESSED2,
   MT_SHOTGUY,
   MT_VILE,
   MT_FIRE,

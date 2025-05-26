@@ -140,7 +140,6 @@ musicinfo_t S_music[] = {
 //
 // killough 12/98: 
 // Reimplemented 'singularity' flag, adjusting many sounds below
-
 sfxinfo_t S_sfx[] = {
   { 0 },  // S_sfx[0] needs to be a dummy for odd reasons.
 
@@ -168,9 +167,11 @@ sfxinfo_t S_sfx[] = {
   { "stnmov", sg_none,  119, 0, -1, -1, 0 },
   { "swtchn", sg_none,   78, 0, -1, -1, 0 },
   { "swtchx", sg_none,   78, 0, -1, -1, 0 },
-  { "plpain", sg_none,   96, 0, -1, -1, 0 },
+  { "plpain", sg_none,   96, 0, -1, -1, 0, 0, 0, 8 },
   { "dmpain", sg_none,   96, 0, -1, -1, 0 },
-  { "popain", sg_none,   96, 0, -1, -1, 0 },
+  { "popain", sg_none,   96, 0, -1, -1, 0, 0, 0, 0 },
+  { "poxain", sg_none,   96, 0, -1, -1, 0, 0, 0, 8 },
+  { "topain", sg_none,   96, 0, -1, -1, 0, 0, 0, 8 },
   { "vipain", sg_none,   96, 0, -1, -1, 0 },
   { "mnpain", sg_none,   96, 0, -1, -1, 0 },
   { "pepain", sg_none,   96, 0, -1, -1, 0 },
@@ -182,8 +183,9 @@ sfxinfo_t S_sfx[] = {
   { "posit1", sg_none,   98, 0, -1, -1, 0 },
   { "posit2", sg_none,   98, 0, -1, -1, 0 },
   { "posit3", sg_none,   98, 0, -1, -1, 0 },
-  { "bgsit1", sg_none,   98, 0, -1, -1, 0 },
-  { "bgsit2", sg_none,   98, 0, -1, -1, 0 },
+  { "posxit", sg_none,   98, 0, -1, -1, 0 },
+  { "bgsit1", sg_none,   98, 0, -1, -1, 0, 0, 0, 8 },
+  { "bgsit2", sg_none,   98, 0, -1, -1, 0, 0, 0, 8 },
   { "sgtsit", sg_none,   98, 0, -1, -1, 0 },
   { "cacsit", sg_none,   98, 0, -1, -1, 0 },
   { "brssit", sg_none,   94, 0, -1, -1, 0 },
@@ -205,8 +207,8 @@ sfxinfo_t S_sfx[] = {
   { "podth1", sg_none,   70, 0, -1, -1, 0 },
   { "podth2", sg_none,   70, 0, -1, -1, 0 },
   { "podth3", sg_none,   70, 0, -1, -1, 0 },
-  { "bgdth1", sg_none,   70, 0, -1, -1, 0 },
-  { "bgdth2", sg_none,   70, 0, -1, -1, 0 },
+  { "bgdth1", sg_none,   70, 0, -1, -1, 0, 0, 0, 0 },
+  { "bgdth2", sg_none,   70, 0, -1, -1, 0, 0, 0, 0 },
   { "sgtdth", sg_none,   70, 0, -1, -1, 0 },
   { "cacdth", sg_none,   70, 0, -1, -1, 0 },
   { "skldth", sg_none,   70, 0, -1, -1, 0 },
@@ -219,12 +221,12 @@ sfxinfo_t S_sfx[] = {
   { "pedth",  sg_none,   32, 0, -1, -1, 0 },
   { "skedth", sg_none,   32, 0, -1, -1, 0 },
   { "posact", sg_none,  120, 0, -1, -1, 0 },
-  { "bgact",  sg_none,  120, 0, -1, -1, 0 },
+  { "bgact",  sg_none,  120, 0, -1, -1, 0, 0, 0, 8 },
   { "dmact",  sg_none,  120, 0, -1, -1, 0 },
   { "bspact", sg_none,  100, 0, -1, -1, 0 },
   { "bspwlk", sg_none,  100, 0, -1, -1, 0 },
   { "vilact", sg_none,  100, 0, -1, -1, 0 },
-  { "noway",  sg_oof,    78, 0, -1, -1, 0 },
+  { "noway",  sg_oof,    78, 0, -1, -1, 0, 0, 0, 3 },
   { "barexp", sg_none,   60, 0, -1, -1, 0 },
   { "punch",  sg_none,   64, 0, -1, -1, 0 },
   { "hoof",   sg_none,   70, 0, -1, -1, 0 },

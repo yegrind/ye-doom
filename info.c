@@ -83,6 +83,9 @@ char *sprnames[NUMSPRITES+1] = {
   "BON4", // killough 7/11/98: unholy bible in the beta version
 #endif
 
+  "POST",
+
+
   NULL
 };
 
@@ -411,6 +414,42 @@ state_t states[NUMSTATES] = {
   {SPR_POSS,9,5,NULL,S_POSS_RAISE3},  // S_POSS_RAISE2
   {SPR_POSS,8,5,NULL,S_POSS_RAISE4},  // S_POSS_RAISE3
   {SPR_POSS,7,5,NULL,S_POSS_RUN1},  // S_POSS_RAISE4
+
+  {SPR_POST,0,10,A_Look,S_POST_STND2},  // S_POSS_STND
+  {SPR_POST,1,10,A_Look,S_POST_STND}, // S_POSS_STND2
+  {SPR_POST,0,4,A_Chase,S_POST_RUN2}, // S_POSS_RUN1
+  {SPR_POST,0,4,A_Chase,S_POST_RUN3}, // S_POSS_RUN2
+  {SPR_POST,1,4,A_Chase,S_POST_RUN4}, // S_POSS_RUN3
+  {SPR_POST,1,4,A_Chase,S_POST_RUN5}, // S_POSS_RUN4
+  {SPR_POST,2,4,A_Chase,S_POST_RUN6}, // S_POSS_RUN5
+  {SPR_POST,2,4,A_Chase,S_POST_RUN7}, // S_POSS_RUN6
+  {SPR_POST,3,4,A_Chase,S_POST_RUN8}, // S_POSS_RUN7
+  {SPR_POST,3,4,A_Chase,S_POST_RUN1}, // S_POSS_RUN8
+  {SPR_POST,4,10,A_FaceTarget,S_POST_ATK2}, // S_POSS_ATK1
+  {SPR_POST,5,8,A_PosAttack,S_POST_ATK3}, // S_POSS_ATK2
+  {SPR_POST,4,8,NULL,S_POST_RUN1},  // S_POSS_ATK3
+  {SPR_POST,6,3,NULL,S_POST_PAIN2}, // S_POSS_PAIN
+  {SPR_POST,6,3,A_Pain,S_POST_RUN1},  // S_POSS_PAIN2
+  {SPR_POST,7,5,NULL,S_POST_DIE2},  // S_POSS_DIE1
+  {SPR_POST,8,5,A_Scream,S_POST_DIE3},  // S_POSS_DIE2
+  {SPR_POST,9,5,A_Fall,S_POST_DIE4},  // S_POSS_DIE3
+  {SPR_POST,10,5,NULL,S_POST_DIE5}, // S_POSS_DIE4
+  {SPR_POST,11,-1,NULL,S_NULL}, // S_POSS_DIE5
+  {SPR_POST,12,5,NULL,S_POST_XDIE2},  // S_POSS_XDIE1
+  {SPR_POST,13,5,A_XScream,S_POST_XDIE3}, // S_POSS_XDIE2
+  {SPR_POST,14,5,A_Fall,S_POST_XDIE4},  // S_POSS_XDIE3
+  {SPR_POST,15,5,NULL,S_POST_XDIE5},  // S_POSS_XDIE4
+  {SPR_POST,16,5,NULL,S_POST_XDIE6},  // S_POSS_XDIE5
+  {SPR_POST,17,5,NULL,S_POST_XDIE7},  // S_POSS_XDIE6
+  {SPR_POST,18,5,NULL,S_POST_XDIE8},  // S_POSS_XDIE7
+  {SPR_POST,19,5,NULL,S_POST_XDIE9},  // S_POSS_XDIE8
+  {SPR_POST,20,-1,NULL,S_NULL}, // S_POSS_XDIE9
+  {SPR_POST,10,5,NULL,S_POST_RAISE2}, // S_POSS_RAISE1
+  {SPR_POST,9,5,NULL,S_POST_RAISE3},  // S_POSS_RAISE2
+  {SPR_POST,8,5,NULL,S_POST_RAISE4},  // S_POSS_RAISE3
+  {SPR_POST,7,5,NULL,S_POST_RUN1},  // S_POSS_RAISE4
+
+
   {SPR_SPOS,0,10,A_Look,S_SPOS_STND2},  // S_SPOS_STND
   {SPR_SPOS,1,10,A_Look,S_SPOS_STND}, // S_SPOS_STND2
   {SPR_SPOS,0,3,A_Chase,S_SPOS_RUN2}, // S_SPOS_RUN1
@@ -1369,6 +1408,32 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
     MF_SOLID|MF_SHOOTABLE|MF_COUNTKILL, // flags
     S_POSS_RAISE1   // raisestate
   },
+
+  {   // MT_POSSESSED2
+    -1,   // doomednum
+    S_POST_STND,    // spawnstate
+    20,   // spawnhealth
+    S_POST_RUN1,    // seestate
+    sfx_posxit,   // seesound
+    8,    // reactiontime
+    sfx_pistol,   // attacksound
+    S_POST_PAIN,    // painstate
+    200,    // painchance
+    sfx_poxpain,   // painsound
+    0,    // meleestate
+    S_POST_ATK1,    // missilestate
+    S_POST_DIE1,    // deathstate
+    S_POST_XDIE1,   // xdeathstate
+    sfx_poxpain,   // deathsound
+    8,    // speed
+    20*FRACUNIT,    // radius
+    56*FRACUNIT,    // height
+    100,    // mass
+    0,    // damage
+    sfx_poxpain,   // activesound
+    MF_SOLID|MF_SHOOTABLE|MF_COUNTKILL, // flags
+    S_POST_RAISE1   // raisestate
+  },
   
   {   // MT_SHOTGUY
     9,    // doomednum
@@ -1614,7 +1679,7 @@ mobjinfo_t mobjinfo[NUMMOBJTYPES] = {
     0,    // attacksound
     S_TROO_PAIN,    // painstate
     200,    // painchance
-    sfx_popain,   // painsound
+    sfx_topain,   // painsound
     S_TROO_ATK1,    // meleestate
     S_TROO_ATK1,    // missilestate
     S_TROO_DIE1,    // deathstate
